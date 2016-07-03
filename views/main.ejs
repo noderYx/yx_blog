@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>micro-bolg</title>
+    <link href="res/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="res/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="res/css/page.css" rel='stylesheet' type='text/css'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Blogname Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"
+            />
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!----webfonts---->
+    <link href='http://fonts.useso.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Source+Sans+Pro:200,300,400,600,700,300italic,400italic,600italic'
+          rel='stylesheet' type='text/css'>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!----//webfonts---->
+    <script src="http://ajax.useso.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--end slider -->
+    <!--script-->
+    <script type="text/javascript" src="res/js/move-top.js"></script>
+    <script type="text/javascript" src="res/js/easing.js"></script>
+    <script type="text/javascript" src="res/dataJs/jquery.cookie.js"></script>
+    <script type="text/javascript" src="res/dataJs/mainyx.js"></script>
+    <script type="text/javascript" src="res/dataJs/uptime.js"></script>
+    <!--/script-->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 900);
+            });
+        });
+    </script>
+    <!---->
+
+</head>
+<body>
+<!---strat-banner---->
+<div class="banner">
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index"> <img src="res/images/logo.png" title="soup"/></a>
+            </div>
+            <!---start-top-nav---->
+            <div class="top-menu">
+                <span class="menu"> </span>
+                <ul>
+                    <li class="active"><a href="index">BLOG</a></li>
+                    <li><a href="#" ONCLICK="main()">MAIN</a></li>
+                    <li><a href="sendMessage">MESSAGE</a></li>
+                    <li><a href="register">REGISTER</a></li>
+                    <li><a href="signup">SIGNUP</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <script>
+                $("span.menu").click(function () {
+                    $(".top-menu ul").slideToggle("slow", function () {
+                    });
+                });
+            </script>
+            <!---//End-top-nav---->
+        </div>
+    </div>
+    <div class="container">
+        <br>
+
+            <img   style="width: 650px;height: 150px; padding-left: 490px;"src="<%=headIcon%>">
+            <h3 style=" padding-left: 520px;color: #e0e0e0; "><%=nickname%></h3>
+
+
+        <div class="banner-links">
+            <ul>
+                <li class="active"><a href="index">BLOG</a></li>
+                <li><a href="#" ONCLICK="main()">MAIN</a></li>
+                <li><a href="sendMessage">MESSAGE</a></li>
+                <li><a href="register">REGISTER</a></li>
+                <li><a href="signup">SIGNUP</a></li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+<!---//End-banner---->
+<div class="content">
+    <div class="container">
+        <div class="content-grids">
+            <div class="col-md-8 content-main">
+                <%if(pager.pageResult.length>0){%>
+                <%for(var i = 0;i<pager.pageResult.length;i++){%>
+                <div class="content-grid-sec">
+                    <div class="content-sec-info">
+                        <h3><a href="getMessageDetail?message_id=<%=pager.pageResult[i].message_id%>"><%=pager.pageResult[i].title%></a></h3>
+                        <%if(pager.pageResult[i].sendtime.length!=''){
+                            var mo = pager.pageResult[i].sendtime+'';
+                            mo = mo.substring(0,mo.length-23)%>
+
+                        <h4>
+                            <span class="glyphicon glyphicon-user" ></span>&nbsp;&nbsp;<a href="main?staff_id=<%=pager.pageResult[i].staff_id%>"><%=pager.pageResult[i].nickname%></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%=mo%>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-eye-open" ></span>&nbsp;&nbsp;<%=pager.pageResult[i].readcount%>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-comment" ></span> &nbsp;&nbsp;<%=pager.pageResult[i].replycount%>
+
+                        </h4>
+
+                        <%}%>
+                        <%if(pager.pageResult[i].contents.length>200){
+                            var mo = pager.pageResult[i].contents;
+                            mo = mo.substring(0,200)+'..';%>
+                        <p><%=mo%></p>
+                        <%}else{%>
+                        <p><%=pager.pageResult[i].contents%></p>
+                        <% }%>
+
+                        <%if(pager.pageResult[i].imgurl!=''){%>
+                        <img src="<%=pager.pageResult[i].imgurl%>" style="width: 690px; height:400px;" alt=""/>
+                        <%}%>
+
+                        <a class="bttn" href="getMainDetail?message_id=<%=pager.pageResult[i].message_id%>&staff_id=<%=pager.pageResult[i].staff_id%>">MORE</a>
+                    </div>
+                </div>
+
+                <%}%>
+                <%}%>
+
+
+
+
+
+                <div class="pages">
+                    <ul>
+                        <!--处理数字显示个数-->
+                        <% var prevNum = 10; var nextNum=10; %>
+
+                        <%if(pager.pageCount-pager.pageCurrent > 5){%>
+                        <% prevNum = 5 %>
+                        <%} else {%>
+                        <%prevNum = prevNum - (pager.pageCount-pager.pageCurrent)%>
+                        <%}%>
+                        <%if(pager.pageCurrent-5 > 0){%>
+                        <% nextNum = 5 %>
+                        <%} else {%>
+                        <%nextNum = nextNum - (pager.pageCurrent) %>
+                        <%}%>
+
+                        <% if(pager.pageCount-pager.pageCurrent > 5 &&pager.pageCurrent-5 > 0 ){%>
+                        <% prevNum=5%>
+                        <% nextNum=4%>
+                        <%}%>
+                        <!--处理数字显示个数 end-->
+                        <li class="disabled"><a href="javascript:void(0)"> 共<%=pager.maxNum%>条</a></li>
+                        <li class="disabled"><a href="javascript:void(0)"> 总<%=pager.pageCount%> 页 </a></li>
+                        <%if(pager.maxNum==0){%>
+                        <li class="disabled"><a href="javascript:void(0)">首页</a></li>
+                        <%}else{%>
+                        <li><a href="<%=pager.pagePath%>pageCurrent=1">首页</a></li>
+                        <%}%>
+                        <!--判断有没有前一页-->
+
+                        <%if(pager.pageCurrent==1){%>
+                        <li class="disabled"><a href="javascript:void(0)">上一页</a></li>
+                        <%}else{%>
+                        <%if(pager.maxNum==0){%>
+                        <li class="disabled"><a href="javascript:void(0)">上一页</a></li>
+                        <%}else{%>
+                        <li><a href="<%=pager.pagePath%>pageCurrent=<%=parseInt(pager.pageCurrent)-1%>&staff_id=<%=pager.staff_id%>">上一页</a></li>
+                        <%}%>
+                        <%}%>
+                        <!--判断有没有前一页  end-->
+
+                        <!--循环显示页码-->
+                        <% for(var i = prevNum; i > 0; i--){ %>
+                        <%  if( parseInt(pager.pageCurrent)-i > 0 ) { %>
+                        <li><a href="<%=pager.pagePath%>pageCurrent=<%=parseInt(pager.pageCurrent)-i%>&staff_id=<%=pager.staff_id%>"><%=(parseInt(pager.pageCurrent)-i)%></a></li>
+                        <%}}%>
+                        <li class="active"><a href="<%=pager.pagePath%>pageCurrent=<%=pager.pageCurrent%>&staff_id=<%=pager.staff_id%>" ><%=pager.pageCurrent%></a></li>
+                        <% for(var i = 1; i <=nextNum; i++){ %>
+                        <%  if( parseInt(pager.pageCurrent)+i <= pager.pageCount ) { %>
+                        <li><a href="<%=pager.pagePath%>pageCurrent=<%=parseInt(pager.pageCurrent)+i%>&staff_id=<%=pager.staff_id%>"><%=parseInt(pager.pageCurrent)+i%></a></li>
+                        <%}}%>
+                        <!--循环显示页码  end-->
+                        <!--判断有没有下一页-->
+                        <%if(pager.pageCurrent==pager.pageCount){%>
+                        <li class="disabled"><a href="javascript:void(0)">下一页</a></li>
+                        <%}else{%>
+                        <%if(pager.maxNum==0){%>
+                        <li class="disabled"><a href="javascript:void(0)">下一页</a></li>
+                        <%}else{%>
+                        <li><a  href="<%=pager.pagePath%>pageCurrent=<%=parseInt(pager.pageCurrent)+1%>&staff_id=<%=pager.staff_id%>">下一页</a></li>
+                        <%}%>
+
+                        <%}%>
+                        <!--判断有没有下一页  end-->
+                        <%if(pager.maxNum==0){%>
+                        <li class="disabled"><a href="javascript:void(0)">尾页</a></li>
+                        <%}else{%>
+                        <li><a href="<%=pager.pagePath%>pageCurrent=<%=pager.pageCount%>&staff_id=<%=pager.staff_id%>">尾页</a></li>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 content-main-right">
+                <div class="search">
+                    <h3>SEARCH HERE</h3>
+                    <form action="index" method="get">
+                        <input type="text" style=" float: left;height: 36px;" name="pageMhName" value="<%=pager.pageMhName%>">
+                        <input type="submit" style=" margin-top: -8px;" value="">
+                    </form>
+                </div>
+                <div class="categories">
+                    <h3>Hot Search</h3>
+                    <%if(hotkey.length>0){%>
+                    <li class="active"><a href="getMessageDetail?message_id=<%=hotkey[0].message_id%>"><%=hotkey[0].title%></a></li>
+                    <% for(var i=1;i<hotkey.length;i++){%>
+                    <li><a href="getMessageDetail?message_id=<%=hotkey[i].message_id%>"><%=hotkey[i].title%></a></li>
+                    <%}}%>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--fotter-->
+<div class="fotter">
+    <div class="container">
+        <div class="col-md-4 fotter-info">
+            <h3>INTEGER VITAE LIBERO</h3>
+
+            <p>Raesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+                Aliquam erat volutpat. </p>
+
+            <p>Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis
+                nibh. Quisque a lectus. </p>
+        </div>
+        <div class="col-md-4 fotter-list">
+            <h3>VESTIBULUM COMMO</h3>
+            <ul>
+                <li><a href="#">Ut alliquam solicitudin</a></li>
+                <li><a href="#">Neque id cursus faucibus</a></li>
+                <li><a href="#">Raesent dapibus neque id cursus</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4 fotter-media">
+            <h3>FOLLOW US ON....</h3>
+
+            <div class="social-icons">
+                <a href="#"><span class="fb"> </span></a>
+                <a href="#"><span class="twt"> </span></a>
+                <a href="#"><span class="in"> </span></a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+         var defaults = {
+         containerID: 'toTop', // fading element id
+         containerHoverID: 'toTopHover', // fading element hover id
+         scrollSpeed: 1200,
+         easingType: 'linear'
+         };
+         */
+        $().UItoTop({easingType: 'easeOutQuart'});
+    });
+</script>
+<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
+</body>
+</html>

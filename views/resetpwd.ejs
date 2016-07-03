@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>SET PWD</title>
+   <!-- Custom Theme files -->
+   <link href="res/login/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+   <!-- Custom Theme files -->
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="keywords" content="Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+   <!--Google Fonts-->
+   <link href='http://fonts.useso.com/css?family=Roboto:500,900italic,900,400italic,100,700italic,300,700,500italic,100italic,300italic,400' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.useso.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+   <!--Google Fonts-->
+   <script type="text/javascript" src="res/dataJs/jquery-1.11.2.min.js"></script>
+   <script type="text/javascript" src="res/dataJs/reset.js"></script>
+
+</head>
+<body>
+<input id="msg" type="hidden" value="<%=msg%>"/>
+<input id="qq1" type="hidden" value="<%=qq%>"/>
+<input id="mobile1" type="hidden" value="<%=mobile%>"/>
+<div class="login">
+   <div class="login-top">
+      <h1>SET PASSWORD</h1>
+      <div class="avtar">
+         <img src="res/login/images/avtar.png"  style="width: 79px;height: 79px;"/>
+      </div>
+      <form action="resetPassword" name="form1" method="post">
+         <input type="text"  placeholder = 'QQ' name="qq" id="qq"  onblur="onblurMethod()">
+         <input type="text"  placeholder = 'MOBILE' name="mobile" id="mobile" >
+      </form>
+
+      <div class="forgot">
+
+         <a href="login">login</a>
+         <input type="button" value="reset" onclick="validate()">
+      </div>
+   </div>
+   <div class="login-bottom">
+      <h3>New User &nbsp;<a href="register">Register</a>&nbsp Here</h3>
+   </div>
+</div>
+
+</body>
+</html>
